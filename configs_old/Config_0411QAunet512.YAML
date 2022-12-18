@@ -1,0 +1,36 @@
+# masi-45
+# Try DiceCELoss and AdamW, and affine and intensity transforms
+# Date:04.06.22
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/passed_qa/"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/lobe/lvlsetsegCC/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+test_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/passed_qa_test/"
+
+# Data load
+dataset: "vlsp"
+image_type: "*.nii.gz"
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.1
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 4
+checkpoint: 'epoch132.tar'
+pretrained: null
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 1
+device: "cuda:0"
+batch_size: 1
+lr: 0.0001
+epochs: 600
+val_interval: 1
+checkpoint_interval: 4
+include_bg_loss: True

@@ -1,0 +1,32 @@
+#masi-45 16GB Quadro (Kailey's)
+#Early experiments showing better performance with loss that includes background loss.
+#Can the performance be improved further with deeper Unet?
+#Date:03.17.22
+
+
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/train/"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/lobe/lvlsetsegCC/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+
+# Data load
+sample_size: 300
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.1
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 6
+num_workers: 3
+checkpoint: null
+
+# Hyperparams
+random_seed: 0
+device: "cuda:0"
+batch_size: 1
+lr: 0.0001
+epochs: 200
+val_interval: 1
+checkpoint_interval: 4
+include_bg_loss: True

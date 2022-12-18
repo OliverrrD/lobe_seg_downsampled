@@ -1,0 +1,47 @@
+# Using masi-55 large GPUs
+# Fine tune AL
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/train"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/label"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+kfolds_path: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/5folds.csv"
+
+# testing
+# test_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/train"
+# test_label_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/label"
+test_dir: "/home/local/VANDERBILT/litz/data/luna16/nifti/train"
+test_label_dir: "/home/local/VANDERBILT/litz/data/luna16/nifti/labels"
+
+# inference
+seg_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/segs"
+clip_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/clips"
+
+# Data load
+dataset: "mixed"
+image_type: "*.nii.gz"
+test_image_type: "*.nii.gz"
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.20
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 2
+checkpoint: null
+pretrained: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models/0911_TS/0911_TS_best_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 2
+device: "cuda:0"
+batch_size: 1
+lr: 0.00005
+warmup_steps: 200
+epochs: 800
+val_interval: 40
+checkpoint_interval: 100
+include_bg_loss: False

@@ -1,0 +1,160 @@
+output directory is 
+Step 1: Segment the lung and save the mask file and segmented file in tmp dir
+ref image is /share3/gaor2/share5backup/tmp/reg_test4/ref_363532318time20150706item00.nii.gz
+move image is /share3/gaor2/share5backup/tmp/reg_test4/move_363532318time20140602item00.nii.gz
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/dicom/__init__.py:53: UserWarning: 
+This code is using an older version of pydicom, which is no longer 
+maintained as of Jan 2017.  You can access the new pydicom features and API 
+by installing `pydicom` from PyPI.
+See 'Transitioning to pydicom 1.x' section at pydicom.readthedocs.org 
+for more information.
+
+  warnings.warn(msg)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/skimage/measure/_regionprops.py:250: UserWarning: regionprops and image moments (including moments, normalized moments, central moments, and inertia tensor) of 2D images will change from xy coordinates to rc coordinates in version 0.16.
+See http://scikit-image.org/docs/0.14.x/release_notes_and_installation.html#deprecations for details on how to avoid this message.
+  warn(XY_TO_RC_DEPRECATION_MESSAGE)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/skimage/measure/_regionprops.py:260: UserWarning: regionprops and image moments (including moments, normalized moments, central moments, and inertia tensor) of 2D images will change from xy coordinates to rc coordinates in version 0.16.
+See http://scikit-image.org/docs/0.14.x/release_notes_and_installation.html#deprecations for details on how to avoid this message.
+  warn(XY_TO_RC_DEPRECATION_MESSAGE)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/dicom/__init__.py:53: UserWarning: 
+This code is using an older version of pydicom, which is no longer 
+maintained as of Jan 2017.  You can access the new pydicom features and API 
+by installing `pydicom` from PyPI.
+See 'Transitioning to pydicom 1.x' section at pydicom.readthedocs.org 
+for more information.
+
+  warnings.warn(msg)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/skimage/measure/_regionprops.py:250: UserWarning: regionprops and image moments (including moments, normalized moments, central moments, and inertia tensor) of 2D images will change from xy coordinates to rc coordinates in version 0.16.
+See http://scikit-image.org/docs/0.14.x/release_notes_and_installation.html#deprecations for details on how to avoid this message.
+  warn(XY_TO_RC_DEPRECATION_MESSAGE)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/skimage/measure/_regionprops.py:260: UserWarning: regionprops and image moments (including moments, normalized moments, central moments, and inertia tensor) of 2D images will change from xy coordinates to rc coordinates in version 0.16.
+See http://scikit-image.org/docs/0.14.x/release_notes_and_installation.html#deprecations for details on how to avoid this message.
+  warn(XY_TO_RC_DEPRECATION_MESSAGE)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/dicom/__init__.py:53: UserWarning: 
+This code is using an older version of pydicom, which is no longer 
+maintained as of Jan 2017.  You can access the new pydicom features and API 
+by installing `pydicom` from PyPI.
+See 'Transitioning to pydicom 1.x' section at pydicom.readthedocs.org 
+for more information.
+
+  warnings.warn(msg)
+(512, 512, 108) (512, 512, 108)
+/share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/ref_seg.nii.gz
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/dicom/__init__.py:53: UserWarning: 
+This code is using an older version of pydicom, which is no longer 
+maintained as of Jan 2017.  You can access the new pydicom features and API 
+by installing `pydicom` from PyPI.
+See 'Transitioning to pydicom 1.x' section at pydicom.readthedocs.org 
+for more information.
+
+  warnings.warn(msg)
+(512, 512, 172) (512, 512, 172)
+/share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/move_seg.nii.gz
+Step 2: Resample the segmented ref image and move image
+mri_convert.bin /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/ref_seg.nii.gz /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/ref_resample.nii.gz -vs 1.0 1.0 1.0 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/ref_seg.nii.gz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 1, 0)
+k_ras = (0, 0, 1)
+Reslicing using trilinear interpolation 
+writing to /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/ref_resample.nii.gz...
+mri_convert.bin /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/move_seg.nii.gz /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/move_resample.nii.gz -vs 1.0 1.0 1.0 
+$Id: mri_convert.c,v 1.226 2016/02/26 16:15:24 mreuter Exp $
+reading from /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/move_seg.nii.gz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 1, 0)
+k_ras = (0, 0, 1)
+Reslicing using trilinear interpolation 
+writing to /share3/gaor2/share5backup/tmp/reg_test4/slurm_tmp/move_resample.nii.gz...
+step 3: Padding the image
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/dicom/__init__.py:53: UserWarning: 
+This code is using an older version of pydicom, which is no longer 
+maintained as of Jan 2017.  You can access the new pydicom features and API 
+by installing `pydicom` from PyPI.
+See 'Transitioning to pydicom 1.x' section at pydicom.readthedocs.org 
+for more information.
+
+  warnings.warn(msg)
+/home/local/VANDERBILT/gaor2/anaconda3/envs/python36/lib/python3.6/site-packages/dicom/__init__.py:53: UserWarning: 
+This code is using an older version of pydicom, which is no longer 
+maintained as of Jan 2017.  You can access the new pydicom features and API 
+by installing `pydicom` from PyPI.
+See 'Transitioning to pydicom 1.x' section at pydicom.readthedocs.org 
+for more information.
+
+  warnings.warn(msg)
+Step 4: LinearBCV affine to reference
+Starting linear reg. of ref_padding.nii.gz and move_padding.nii.gz
+=============================================================
+TMdDSTMdDS
+# points used: 158107/316216, quantile: 0.424907
+t: MIND=207.38, data=433.68, affine=15.30, speed=1.10e+06 dof/s
+TMdDSTMdDS
+# points used: 266616/533232, quantile: 0.435852
+t: MIND=207.65, data=245.42, affine=13.97, speed=1.72e+06 dof/s
+TMdDSTMdDS
+# points used: 468452/936904, quantile: 0.446046
+t: MIND=104.56, data=140.94, affine=11.78, speed=2.36e+06 dof/s
+TMdDSTMdDS
+# points used: 948150/1896300, quantile: 0.456677
+t: MIND=205.67, data=141.97, affine=9.60, speed=1.71e+06 dof/s
++0.985 | +0.057 | -0.019 | -0.000 
+-0.046 | +1.003 | -0.053 | -0.000 
+-0.020 | +0.055 | +0.963 | -0.000 
++12.169 | -11.276 | +17.500 | +1.004 
+Finished. Total time: 1767.72 sec. (1737.9 sec. for MIND+data+affine+trans)
+Step 5: DeedsBCV non-rigid to reference
+Starting registration of ref_padding.nii.gz and move_padding.nii.gz
+=============================================================
+Reading affine matrix file: linearBCV_matrix.txt
++0.985 | +0.057 | -0.019 | -0.000 
+-0.046 | +1.003 | -0.053 | -0.000 
+-0.020 | +0.055 | +0.963 | -0.000 
++12.169 | -11.276 | +17.500 | +1.004 
+MIND STEPS, 3, 3, 2, 2, 1 
+==========================================================
+Level 0 grid=8 with sizes: 54x54x44 hw=8 quant=5
+==========================================================
+TMdDSTMdDS
+Time: MIND=211.667, data=1545.19, MST-reg=413.883, transf.=35.2825
+ speed=643527 dof/s
+std(J)=0.41 (J<0)=251.75e-7  SSD before registration: 17015.5 and after 17015.5
+
+==========================================================
+Level 1 grid=7 with sizes: 61x61x50 hw=7 quant=4
+==========================================================
+TMdDSTMdDS
+Time: MIND=106.429, data=1099.87, MST-reg=374.753, transf.=37.3639
+ speed=851634 dof/s
+std(J)=0.34 (J<0)=59.12e-7  SSD before registration: 17015.5 and after 4409.38
+
+==========================================================
+Level 2 grid=6 with sizes: 72x72x59 hw=6 quant=3
+==========================================================
+TMdDSTMdDS
+Time: MIND=211.627, data=681.018, MST-reg=370.74, transf.=37.1474
+ speed=1.27779e+06 dof/s
+std(J)=0.29 (J<0)=17e-7  SSD before registration: 17015.5 and after 3934.68
+
+==========================================================
+Level 3 grid=5 with sizes: 86x86x71 hw=5 quant=2
+==========================================================
+TMdDSTMdDS
+Time: MIND=106.166, data=540.783, MST-reg=341.127, transf.=36.7905
+ speed=1.58503e+06 dof/s
+std(J)=0.27 (J<0)=95.03e-7  SSD before registration: 17015.5 and after 3441.87
+
+==========================================================
+Level 4 grid=4 with sizes: 108x108x89 hw=4 quant=1
+==========================================================
+TMdDSTMdDS
+Time: MIND=209.353, data=815.597, MST-reg=320.648, transf.=36.2334
+ speed=1.33206e+06 dof/s
+std(J)=0.24 (J<0)=65.7e-7  SSD before registration: 17015.5 and after 2904.23
+
+SSD before registration: 32933.1 and after 2860.76
+Finished. Total time: 7607.3 sec. (0 sec. for MIND+data+reg+trans)
+Thu Nov 15 13:25:03 CST 2018

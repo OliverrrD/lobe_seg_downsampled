@@ -1,0 +1,38 @@
+# masi-45
+# Manually corrected VLSP pseudo-labels that model scored <= 0.7 dice
+# corrected examples combined with luna16 dataset to form active learning dataaset
+# 5-fold cv
+# Date:05.06.22
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_07/train_nifti"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_07/label_nifti"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+kfolds_path: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_07/5folds_nifti.csv"
+
+# Data load
+dataset: "mixed"
+image_type: null
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+k: 5
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 1
+checkpoint: null
+pretrained: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models/0418cv_luna16/fold1/0418cv_luna16_best_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 2
+device: "cuda:0"
+batch_size: 2
+lr: 0.0001
+epochs: 800
+val_interval: 15
+checkpoint_interval: 100
+include_bg_loss: False

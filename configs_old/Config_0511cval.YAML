@@ -1,0 +1,41 @@
+# masi-45
+# CVAL: cross validation with active learning
+# 30 pseudo-labels were manually corrected from VLSP cohort
+# corrected examples combined with luna16 dataset to form active learning dataaset
+# Using peter pretrained
+# Date:05.11.22
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_rand/train"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_rand/label_nifti"
+#label_dir: "/home/local/VANDERBILT/litz/data/luna16/fixed_labels/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+#kfolds_path: "/home/local/VANDERBILT/litz/data/luna16/5fold_qa.csv"
+kfolds_path: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_rand/5folds.csv"
+
+# Data load
+dataset: "mixed"
+image_type: null
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+k: 5
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 2
+checkpoint: null
+pretrained: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/peter/unet512_0416/best_metric_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 2
+device: "cuda:0"
+batch_size: 2
+lr: 0.0001
+epochs: 800
+val_interval: 40
+checkpoint_interval: 100
+include_bg_loss: False

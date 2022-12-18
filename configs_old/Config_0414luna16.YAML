@@ -1,0 +1,37 @@
+# masi-45
+# Fine tune Peter model on train LUNA16 dataset with fixed body mask preprocessing
+# Peter model  was pretrained on all training examples from VLSP and doesn't seem to suffer form overfitting
+# Date:04.14.22
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/luna16/preproc_train"
+label_dir: "/home/local/VANDERBILT/litz/data/luna16/fixed_labels/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+test_dir: "/home/local/VANDERBILT/litz/data/luna16/preproc_labeled_raw"
+
+# Data load
+dataset: "luna16"
+image_type: "*.mhd"
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.20
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 3
+checkpoint: 'epoch480.tar'
+pretrained: "/nfs/masi/leeh43/thomas_dataset/train_model/all_bz_2_DiceCE/best_metric_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet256"
+random_seed: 2
+device: "cuda:0"
+batch_size: 1
+lr: 0.0001
+epochs: 1000
+val_interval: 1
+checkpoint_interval: 10
+include_bg_loss: False

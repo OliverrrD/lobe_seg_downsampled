@@ -1,0 +1,31 @@
+# masi-45 16GB Quadro RTX
+# For dev training protocol
+# Date:03.27.22
+
+
+# Metadata
+config_id: 0228dev
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/train/"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/lobe/uniform_lvlsetseg/"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+
+# Data load
+sample_size: 100
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.1
+crop_shape: !!python/tuple [128,128,128]
+crop_nsamples: 4
+num_workers: 2
+
+# Hyperparams
+random_seed: 0
+device: "cuda:0"
+batch_size: 1
+lr: 0.0001
+epochs: 300
+val_interval: 10
+
+

@@ -1,0 +1,44 @@
+# From npy
+# Using peter pretrained
+# cosine warmup to learning rate
+
+# Paths
+data_dir: "/home/litz/data/TotalSegmentator/dataset/npy/train"
+label_dir: "/home/litz/data/TotalSegmentator/dataset/npy/label"
+#label_dir: "/home/local/VANDERBILT/litz/data/luna16/fixed_labels/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+#kfolds_path: "/home/local/VANDERBILT/litz/data/luna16/5fold_qa.csv"
+# kfolds_path: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/5folds.csv"
+
+test_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/train"
+test_label_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_al/label"
+
+# Data load
+dataset: "mixed"
+image_type: "*.npy"
+test_image_type: "*.nii.gz"
+npy_data: True
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.20
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 2
+checkpoint: null
+pretrained: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/peter/unet512_0416/best_metric_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 2
+device: "cuda:0"
+batch_size: 6
+lr: 0.0003
+warmup_steps: 500
+epochs: 400
+val_interval: 40
+checkpoint_interval: 100
+include_bg_loss: False

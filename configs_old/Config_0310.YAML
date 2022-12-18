@@ -1,0 +1,34 @@
+# masi-55 16GB Quadro RTX
+# Suspect overfitting on background because loss decreasing but validation dice decreasing.
+# Test hypothesis with 300
+# Date:03.10.22
+# CUDA_VISIBLE_DEVICES=1 python main.py Config_0228.YAML
+
+# Metadata
+config_id: '0310'
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/train/"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/lobe/lvlsetsegCC/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+
+# Data load
+sample_size: 300
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.1
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 6
+num_workers: 3
+checkpoint: null
+
+# Hyperparams
+random_seed: 0
+device: "cuda:0"
+batch_size: 1
+lr: 0.0001
+epochs: 200
+val_interval: 1
+checkpoint_interval: 4
+include_bg_loss: False

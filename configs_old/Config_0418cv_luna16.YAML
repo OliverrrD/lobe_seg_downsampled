@@ -1,0 +1,42 @@
+# masi-45
+# Fine tune with cross validation
+# Peter model  was pretrained on all training examples from VLSP and doesn't seem to suffer form overfitting
+# Date:04.14.22
+
+# Paths
+#data_dir: "/home/local/VANDERBILT/litz/data/luna16/preproc_qa"
+#label_dir: "/home/local/VANDERBILT/litz/data/luna16/fixed_labels/"
+data_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_rand/train"
+label_dir: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_rand/label_nifti"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+#kfolds_path: "/home/local/VANDERBILT/litz/data/luna16/5fold_qa.csv"
+kfolds_path: "/home/local/VANDERBILT/litz/data/imagevu/nifti/active_learning/dataset_rand/5folds.csv"
+
+# Data load
+#dataset: "luna16"
+#image_type: "*.mhd"
+dataset: "mixed"
+image_type: null
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+k: 5
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 2
+checkpoint: null
+pretrained: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/peter/unet512_0416/best_metric_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 2
+device: "cuda:0"
+batch_size: 2
+lr: 0.0001
+epochs: 800
+val_interval: 15
+checkpoint_interval: null
+include_bg_loss: False

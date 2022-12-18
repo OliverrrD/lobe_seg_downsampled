@@ -1,0 +1,37 @@
+# masi-45
+# Fine tune 0406 on train LUNA16 dataset without preprocessing
+# 0406 was pretrained on QA'd examples of VLSP
+# Date:04.09.22
+
+# Paths
+data_dir: "/home/local/VANDERBILT/litz/data/luna16/train"
+label_dir: "/home/local/VANDERBILT/litz/data/luna16/fixed_labels/"
+checkpoint_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/checkpoints"
+model_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models"
+log_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/logs"
+tmp_dir: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/tmp"
+test_dir: "/home/local/VANDERBILT/litz/data/luna16/test"
+
+# Data load
+dataset: "luna16"
+image_type: "*.mhd"
+sample_size: null
+pix_dim: !!python/tuple [1, 1, 1]
+val_ratio: 0.20
+crop_shape: !!python/tuple [96,96,96]
+crop_nsamples: 4
+num_workers: 3
+checkpoint: 'epoch100.tar'
+pretrained: "/home/local/VANDERBILT/litz/github/MASILab/lobe_seg/models/0406unet512/0406unet512_best_model.pth"
+window: !!python/tuple [-1024, 600]
+
+# Hyperparams
+model: "unet512"
+random_seed: 2
+device: "cuda:0"
+batch_size: 1
+lr: 0.0001
+epochs: 1000
+val_interval: 1
+checkpoint_interval: 4
+include_bg_loss: False
